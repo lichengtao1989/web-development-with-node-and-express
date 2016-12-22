@@ -1,0 +1,46 @@
+{
+  "name": "hudie",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "start http://localhost && node ./bin/www",
+    "test-d": "start http://localhost && start http://127.0.0.1:8080/?port=5858 && node-debug ./bin/www test",
+    "test": "start http://localhost && node ./bin/www test",
+    "testm-d": "start http://localhost && start http://127.0.0.1:8080/?port=5858 && node-debug ./bin/www testm",
+    "testm": "start http://localhost && node ./bin/www testm",
+    "dev-d": "start http://localhost && start http://127.0.0.1:8080/?port=5858 && node-debug ./bin/www dev",
+    "dev": "start http://localhost && node ./bin/www dev",
+    "online-d": "start http://localhost && start http://127.0.0.1:8080/?port=5858 && node-debug ./bin/www online",
+    "online": "start http://localhost && node ./bin/www online"
+  },
+  "dependencies": {
+    "art-template": "^3.0.3",
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.3",
+    "express": "~4.13.1",
+    "express3-handlebars": "^0.5.2",
+    "mongoose": "^4.4.12",
+    "morgan": "~1.6.1",
+    "seajs": "^3.0.2",
+    "serve-favicon": "~2.3.0",
+    "tmodjs": "^1.0.3"
+  },
+  "tmodjs-config": {
+    "output": "./build",
+    "charset": "utf-8",
+    "syntax": "simple",
+    "helpers": null,
+    "escape": true,
+    "compress": true,
+    "type": "default",
+    "runtime": "template.js",
+    "combo": false,
+    "minify": true,
+    "cache": false
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}
