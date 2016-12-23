@@ -41,6 +41,14 @@
     "cache": false
   },
   "devDependencies": {
-    "nodemon": "^1.9.2"
+    "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-cafe-mocha": "^0.1.13",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-exec": "^1.0.1",
+    "linkchecker": "^1.1.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.9.2",
+    "zombie": "^5.0.5"
   }
 }
