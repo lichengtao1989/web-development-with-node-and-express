@@ -27,7 +27,7 @@ app.listen(app.get('port'), function() {
         app.get('port') + '; press Ctrl-C to terminate.');
 });
 app.use(express.static(__dirname + '/public')); //静态资源指向public目录 访问用/js/...
-
+app.use(require('body-parser')());
 // var fortune=require('./lib/fotpage1/fortune.js');
 var fortune = require('./lib/fortune.js');
 
@@ -83,7 +83,20 @@ app.use(function(req, res, next) {
 /*中间件的顺序很重要，越重要，越常用的东西放最上面*/
 
 /*页面路由部分*/
-
+app.get('/newsletter', function(req, res){
+// 我们会在后面学到 CSRF……目前， 只提供一个虚拟值
+res.render('newsletter', { csrf: 'CSRF token goes here' });
+});
+app.get('/thank-you', function(req, res) {
+    res.render('thank-you');
+});
+app.post('/process', function(req, res){
+console.log('Form (from querystring): ' + req.query.form);
+console.log('CSRF token (from hidden form field): ' + req.body._csrf);
+console.log('Name (from visible form field): ' + req.body.name);
+console.log('Email (from visible form field): ' + req.body.email);
+res.redirect(303, '/thank-you');
+})
 app.get('/', function(req, res) {
     res.render('home');
 });
@@ -113,13 +126,22 @@ app.get('/headers_req_res', function(req, res) {
 app.get('/jquerytest', function(req, res) {
     res.render('jquerytest');
 });
-
+app.get('/nursery-rhyme', function(req, res) {
+    res.render('nursery-rhyme');
+});
 app.use(function(req, res) {
     res.type('text/plain');
     res.status(404);
     res.send('404-Not Found');
 });
-
+app.get('/data/nursery-rhyme', function(req, res) {
+    res.json({
+        animal: 'squirrel',
+        bodyPart: 'tail',
+        adjective: 'bushy',
+        noun: 'heck',
+    });
+});
 app.use(function(err, res, req, next) {
     console.error(error.stack);
     res.type('text/plain');

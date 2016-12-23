@@ -41,6 +41,7 @@
     "cache": false
   },
   "devDependencies": {
+    "body-parser": "^1.13.3",
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-cafe-mocha": "^0.1.13",
